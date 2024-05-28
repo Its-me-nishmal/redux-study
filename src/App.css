@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+/* app.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #1a1a2e; /* Dark background */
+  color: #eaeaea; /* Light text color */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e, #16213e); /* Default dark gradient background */
+  font-family: 'Arial', sans-serif;
+  transition: background 0.5s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.background-hundred {
+  background: linear-gradient(135deg, #1a1a2e, #3b82f6); /* Blue gradient for count >= 100 */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.background-thousand {
+  background: linear-gradient(135deg, #1a1a2e, #10b981); /* Green gradient for count >= 1000 */
+}
+
+.count {
+  font-size: 4rem;
+  color: #e94560; /* Vibrant color for the count */
+  margin: 20px 0;
+}
+
+button {
+  background-color: #0f3460; /* Dark button background */
+  border: none;
+  border-radius: 25px;
+  color: #eaeaea;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin: 10px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e94560; /* Vibrant hover color */
+  color: #fff;
+}
+
+.resetInput {
+  background-color: #16213e; /* Dark input background */
+  border: none;
+  border-radius: 25px;
+  color: #eaeaea;
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.resetInput::placeholder {
+  color: #eaeaea;
+}
+
+.resetInput:focus {
+  background-color: #0f3460; /* Darker input background on focus */
+  color: #fff;
 }
