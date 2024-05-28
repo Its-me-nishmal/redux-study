@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { increment,degrement } from "../features/counters/counterSlice";
 import useReset from "../hooks/useReset";
 import useVoiceCommands from "../hooks/useCommand";
+import useClass from "../hooks/useClass";
+
 
 
 
@@ -13,16 +15,14 @@ function Counter() {
     const ref = useRef();
     const handleReset = useReset(ref)
     useVoiceCommands();
-    
-    let backgroundClass = "container";
-    if (count >= 20) {
-        backgroundClass += " background-thousand";
-    } else if (count >= 10) {
-        backgroundClass += " background-hundred";
+    const handleZero = () => {
+        if ( isNaN(Number(ref.current.value)) || Number(ref.current.value) < 0 || ref.current.value.includes(".")) {
+            ref.current.value = 0;
+        }
     }
 
     return (
-        <div className={backgroundClass}>
+        <div className={useClass(count)}>
             <div>
             <p className="count">{count}</p>
             </div>
@@ -30,8 +30,8 @@ function Counter() {
             <div>
             <button onClick={()=>dispatch(increment(ref.current.value))} className="increment">increment</button>
             <button onClick={handleReset} className="reset">reset</button>
-            <button onClick={()=>dispatch(degrement(ref.current.value))} className="degrement">degrement</button>
-            <input type="text" placeholder="enter defualt value" ref={ref} className="resetInput"/>
+            <button onClick={()=>dispatch(degrement(ref.current.value))} className="degrement" disabled={count <= 0}>degrement</button>
+            <input type="text" placeholder="enter defualt value" ref={ref} className="resetInput" onChange={handleZero}/>
             </div>
         </div>
     )

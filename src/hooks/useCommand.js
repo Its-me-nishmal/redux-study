@@ -19,6 +19,7 @@ const useVoiceCommands = () => {
           annyang.abort();
         },
         'reset': () => {
+          console.log("reset");
           dispatch(reset());
         },
       };
